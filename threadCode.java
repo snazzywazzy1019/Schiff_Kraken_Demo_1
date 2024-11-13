@@ -9,15 +9,17 @@ public class threadCode
 		System.out.println("hi");
 		ExecutorService fixedPool = Executors.newFixedThreadPool(1000);
 
-		long totalTime = 0;
+		int totalTime = 0;
+		long startTime = System.currentTimeMillis();
 		try
 		{
 			for(int x = 0; x < 1000; x++)
 			{
-				Future<Long> future = fixedPool.submit(new Task());
+				Future<Integer> future = fixedPool.submit(new Task());
 				totalTime += future.get();
 			}
-			System.out.println(totalTime + " : TIME in milliseconds");
+			System.out.println(totalTime + " : total ");
+			System.out.println(" time: " + (System.currentTimeMillis() - startTime));
 		}
 		catch(Exception e)
 		{
@@ -25,19 +27,17 @@ public class threadCode
 		}
 	}
 
-	static class Task implements Callable
+	static class Task implements Callable<Integer>
 	{
 		@Override
-		public Long call() throws Exception
+		public Integer call() throws Exception
 		{
-			long start = System.currentTimeMillis();
 			int numbers = 0;
 			for(int x = 1; x <= 1000000; x++)
 			{
 				numbers++;
 			}
-			System.out.println(numbers);
-			return System.currentTimeMillis() - start;
+			return numbers;
 		}
 	}
 
