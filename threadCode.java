@@ -38,7 +38,7 @@ public class threadCode
 				{
 					int numbers = 0;
 
-					for(int x = 1; x <= 1000000; x++)
+					for(int x = 1; x <= 1000000000; x++)
 					{
 						numbers++;
 					}
@@ -63,7 +63,7 @@ public class threadCode
 		public Integer call() throws Exception
 		{
 			int numbers = 0;
-			for(int x = 1; x <= 1000000; x++)
+			for(int x = 1; x <= 1000000000; x++)
 			{
 				numbers++;
 			}
